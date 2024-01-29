@@ -1,0 +1,21 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+
+<FluentCheckbox @bind-Value:get="@FirstCheckboxChecked" @bind-Value:set="FirstCheckboxChanged">FirstCheckbox</FluentCheckbox>
+<FluentCheckbox @bind-Value="@SecondCheckboxChecked" Disabled="@IsDisabled">Disabled</FluentCheckbox>
+
+@code {
+	public bool IsDisabled = true;
+	public bool SecondCheckboxChecked = true;
+
+	public bool FirstCheckboxChecked = false;
+
+
+	public void FirstCheckboxChanged(bool newValue)
+	{
+		FirstCheckboxChecked = newValue;
+		SecondCheckboxChecked = !newValue;
+	}
+
+}
